@@ -1,4 +1,5 @@
 ﻿using System;
+using TimeZoneConverter;
 
 namespace TimeZoneConvert
 {
@@ -17,16 +18,16 @@ namespace TimeZoneConvert
                     https://stackoverflow.com/questions/41566395/timezoneinfo-in-net-core-when-hosting-on-unix-nginx?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
                 */
 
-                TimeZoneInfo zone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
-                //try
-                //{
-                //    zone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
-                //}
-                //catch (TimeZoneNotFoundException)
-                //{
-                //    var ianaTimeZoneId = TZConvert.WindowsToIana(timeZoneId);
-                //    zone = TimeZoneInfo.FindSystemTimeZoneById(ianaTimeZoneId);
-                //}
+                TimeZoneInfo zone;
+                try
+                {
+                   zone = TimeZoneInfo.FindSystemTimeZoneById(timeZoneId);
+                }
+                catch (TimeZoneNotFoundException)
+                {
+                   var ianaTimeZoneId = TZConvert.WindowsToIana(timeZoneId);
+                   zone = TimeZoneInfo.FindSystemTimeZoneById(ianaTimeZoneId);
+                }
 
                 toValue = TimeZoneInfo.ConvertTime(fromValue, TimeZoneInfo.Local, zone);
 
