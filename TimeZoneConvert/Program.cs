@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TimeZoneConverter
+namespace TimeZoneConvert
 {
     class Program
     {
