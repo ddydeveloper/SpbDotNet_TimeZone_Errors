@@ -1,0 +1,8 @@
+language: csharp
+mono: none
+dotnet: 2.1
+before_install:
+  - dotnet restore
+script:
+  - dotnet build
+  - dotnet test ./TimeZoneConverterTest/TimeZoneConverterTest.csproj
