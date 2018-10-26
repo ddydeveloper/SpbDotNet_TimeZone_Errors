@@ -12,6 +12,7 @@ namespace TimeZoneConvert
 
             try
             {
+
                 /*
                     .Net Core using system time zones, but, unfortunately, Windows and Linux have different ones.
                     To avoid potentially problems with a Linux host we try to check Windows TimeZoneID, and if we can't find suitable one - use Linux TimeZoneId
