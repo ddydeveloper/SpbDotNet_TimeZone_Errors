@@ -3,9 +3,9 @@ using TimeZoneConverter;
 
 namespace TimeZoneConvert
 {
-    public class Converter
+    public static class Converter
     {
-        public bool TryConvertToTimeZone(DateTime fromValue, string timeZoneId, out DateTime toValue, out string errorMsg)
+        public static bool TryConvertToTimeZone(DateTime fromValue, string timeZoneId, out DateTime toValue, out string errorMsg)
         {
             toValue = fromValue;
             errorMsg = null;
