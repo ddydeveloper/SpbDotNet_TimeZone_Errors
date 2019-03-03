@@ -16,6 +16,9 @@ namespace TimeZoneConvert
 
                 return true;
             }
+
+            #region Exceptions
+
             catch (TimeZoneNotFoundException e)
             {
                 errorMsg = $"The registry does not define the {timeZoneId} zone, {e.Message}";
@@ -31,6 +34,8 @@ namespace TimeZoneConvert
                 errorMsg = $"Can't convert to {timeZoneId} zone. {e.Message}";
                 return false;
             }
+
+            #endregion
         }
     }
 }
