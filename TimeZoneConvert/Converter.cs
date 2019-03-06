@@ -13,11 +13,15 @@ namespace TimeZoneConvert
             try
             {
 
+                #region Error description
+
                 /*
                     .Net Core using system time zones, but, unfortunately, Windows and Linux have different ones.
                     To avoid potentially problems with a Linux host we try to check Windows TimeZoneID, and if we can't find suitable one - use Linux TimeZoneId
                     https://stackoverflow.com/questions/41566395/timezoneinfo-in-net-core-when-hosting-on-unix-nginx?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
                 */
+
+                #endregion
 
                 TimeZoneInfo zone;
                 try
@@ -34,6 +38,9 @@ namespace TimeZoneConvert
 
                 return true;
             }
+
+            #region Exceptions
+
             catch (TimeZoneNotFoundException e)
             {
                 errorMsg = $"The registry does not define the {timeZoneId} zone, {e.Message}";
@@ -49,6 +56,8 @@ namespace TimeZoneConvert
                 errorMsg = $"Can't convert to {timeZoneId} zone. {e.Message}";
                 return false;
             }
+
+            #endregion
         }
     }
 }
